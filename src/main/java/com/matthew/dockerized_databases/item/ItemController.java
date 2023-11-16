@@ -9,15 +9,14 @@ import java.util.List;
 @RestController
 public class ItemController {
 
-    //private final ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
-    public ItemController() {
-        //this.itemRepository = itemRepository;
+    public ItemController(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
     @GetMapping("/all")
     public List<Item> getAllItems() {
-        // itemRepository.findAll();
-        return Collections.emptyList();
+        return itemRepository.findAll();
     }
 }
