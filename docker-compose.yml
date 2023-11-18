@@ -11,13 +11,14 @@ services:
     environment:
       - SERVER_PORT=8080
       - MYSQL_URL=jdbc:mysql://mysqlserver/inventory
+      - POSTGRES_URL=jdbc:posgresql://postgresserver/user
     volumes:
       - ./:/app
     depends_on:
-      - mysqlServer
-      - postgresServer
+      - mysqlserver
+      - postgresserver
 
-  mysqlServer:
+  mysqlserver:
     container_name: mysql
     image: mysql:8.0
     ports:
@@ -32,7 +33,7 @@ services:
       - mysql_data:/var/lib/mysql
       - mysql_config:/etc/mysql/conf.d
 
-  postgresServer:
+  postgresserver:
     container_name: postgres
     image: postgres:latest
     ports:

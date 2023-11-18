@@ -18,30 +18,29 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "postgresEntityManagerFactory", transactionManagerRef = "postgresTransactionManager",
-        basePackages = {"com.matthew.dockerized_databases.user"})
+@EnableJpaRepositories(
+        entityManagerFactoryRef = "postgresEntityManagerFactory",
+        transactionManagerRef = "postgresTransactionManager",
+        basePackages = {"com.matthew.dockerized_databases.user.repo"})
 public class PostgreSQLConfig {
 
-    @Primary
     @Bean(name = "postgresDataSource")
-    @ConfigurationProperties(prefix = "postgres.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource.secondary")
     public DataSource dataSource() {
         return DataSourceBuilder
                 .create()
                 .build();
     }
 
-    @Primary
     @Bean(name = "postgresEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,
                                                                        @Qualifier("postgresDataSource") DataSource dataSource) {
         return builder.dataSource(dataSource)
-                .packages("com.matthew.dockerized_databases.user")
+                .packages("com.matthew.dockerized_databases.user.domain")
                 .persistenceUnit("user")
                 .build();
     }
 
-    @Primary
     @Bean(name = "postgresTransactionManager")
     public PlatformTransactionManager transactionManager(@Qualifier("postgresEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);

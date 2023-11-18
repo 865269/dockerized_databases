@@ -1,8 +1,22 @@
 spring:
   datasource:
-    url: ${MYSQL_URL:jdbc:mysql://localhost/inventory}
-    username: ${MYSQL_USER:inventory}
-    password: ${MYSQL_PASS:inventory}
+    primary:
+      jdbc-url: ${MYSQL_URL:jdbc:mysql://localhost/inventory}
+      username: ${MYSQL_USER:inventory}
+      password: ${MYSQL_PASS:inventory}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jpa:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQLDialect
+    secondary:
+      jdbc-url: jdbc:postgresql://localhost:5432/user
+      username: ${POSTGRES_USER:user}
+      password: ${POSTGRES_PASS:user}
+      driver-class-name: org.postgresql.Driver
+      jpa:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+
   sql:
     init:
       mode: always
@@ -11,9 +25,3 @@ spring:
     hibernate:
       ddl-auto: none
     open-in-view: true
-
-postgres:
-  datasource:
-    url: ${POSTGRES_URL:jdbc:mysql://localhost/user}
-    username: ${POSTGRES_USER:user}
-    password: ${POSTGRES_PASS:user}

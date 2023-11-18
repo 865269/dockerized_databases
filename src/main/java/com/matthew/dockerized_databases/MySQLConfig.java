@@ -19,13 +19,15 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactory", transactionManagerRef = "transactionManager",
+@EnableJpaRepositories(
+        entityManagerFactoryRef = "entityManagerFactory",
+        transactionManagerRef = "transactionManager",
         basePackages = {"com.matthew.dockerized_databases.item.repo"})
 public class MySQLConfig {
 
     @Primary
     @Bean(name = "dataSource")
-    @ConfigurationProperties(prefix = "spring.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource.primary")
     public DataSource dataSource() {
         return DataSourceBuilder
                 .create()
@@ -36,7 +38,8 @@ public class MySQLConfig {
     @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,
                                                                        @Qualifier("dataSource") DataSource dataSource) {
-        return builder.dataSource(dataSource)
+        return builder
+                .dataSource(dataSource)
                 .packages("com.matthew.dockerized_databases.item.domain")
                 .persistenceUnit("item")
                 .build();

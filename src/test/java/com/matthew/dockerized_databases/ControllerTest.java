@@ -2,8 +2,8 @@ package com.matthew.dockerized_databases;
 
 import com.matthew.dockerized_databases.item.domain.Item;
 import com.matthew.dockerized_databases.item.repo.ItemRepository;
-import com.matthew.dockerized_databases.user.User;
-import com.matthew.dockerized_databases.user.UserRepository;
+import com.matthew.dockerized_databases.user.domain.User;
+import com.matthew.dockerized_databases.user.repo.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
