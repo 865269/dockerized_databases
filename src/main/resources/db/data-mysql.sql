@@ -1,3 +1,0 @@
-INSERT IGNORE INTO items VALUES (1, 'Mouse');
-INSERT IGNORE INTO items VALUES (2, 'Keyboard');
-INSERT IGNORE INTO items VALUES (3, 'Monitor');

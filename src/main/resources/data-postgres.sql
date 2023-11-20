@@ -1,0 +1,1 @@
+INSERT INTO users (name) SELECT 'Matthew' WHERE NOT EXISTS (SELECT * FROM users WHERE id=1);

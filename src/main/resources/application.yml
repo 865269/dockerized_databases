@@ -1,4 +1,12 @@
 spring:
+  sql:
+    init:
+      mode: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      open-in-view: true
   datasource:
     primary:
       jdbc-url: ${MYSQL_URL:jdbc:mysql://localhost/inventory}
@@ -8,11 +16,6 @@ spring:
       jpa:
         hibernate:
           dialect: org.hibernate.dialect.MySQLDialect
-      sql:
-        init:
-          mode: always
-          schema-locations: classpath:db/schema-mysql.sql
-          data-locations: classpath:db/data-mysql.sql
     secondary:
       jdbc-url: ${POSTGRES_URL:jdbc:postgresql://localhost/user}
       username: ${POSTGRES_USER:user}
@@ -22,11 +25,5 @@ spring:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  sql:
-    init:
-      mode: always
-  jpa:
-    database: default
-    hibernate:
-      ddl-auto: none
-    open-in-view: true
+
+

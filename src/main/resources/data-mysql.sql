@@ -1,0 +1,5 @@
+INSERT IGNORE INTO items VALUES (1, 'Mouse');
+INSERT IGNORE INTO items VALUES (2, 'Keyboard');
+INSERT IGNORE INTO items VALUES (3, 'Monitor');
+INSERT IGNORE INTO items VALUES (4, 'Mouse Mat');
+INSERT IGNORE INTO items VALUES (5, 'Laptop');
