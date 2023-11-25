@@ -20,8 +20,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-//@Profile("postgres")
 @Configuration
+@Profile("!h2")
 @EnableTransactionManagement
 @EnableJpaRepositories(
         entityManagerFactoryRef = "postgresEntityManagerFactory",
@@ -64,3 +64,4 @@ public class PostgreSQLConfig {
         return dataSourceInitializer;
     }
 }
+

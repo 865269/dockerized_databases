@@ -5,7 +5,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: none # TODO see if enabling this and remove schema-h2.sql means H2Config.java can be deleted
       open-in-view: true
   datasource:
     primary:

@@ -8,14 +8,10 @@ spring:
       platform: h2
       schema-locations: classpath*:schema-h2.sql
       data-locations: classpath*:data-h2.sql
+    jpa:
+      defer-datasource-initialization: true
   datasource:
-    primary:
-      jdbc-url: jdbc:h2:mem:test_db
-      driver-class-name: org.h2.Driver
-      username: test
-      password: test
-    secondary:
-      jdbc-url: jdbc:h2:mem:test_db
-      driver-class-name: org.h2.Driver
-      username: test
-      password: test
+    jdbc-url: jdbc:h2:mem:test_db
+    driver-class-name: org.h2.Driver
+    username: test
+    password: test
