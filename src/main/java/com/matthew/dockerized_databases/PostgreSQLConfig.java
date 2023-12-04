@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@Profile("!h2")
+@Profile("!h2 && !test")
 @EnableTransactionManagement
 @EnableJpaRepositories(
         entityManagerFactoryRef = "postgresEntityManagerFactory",
