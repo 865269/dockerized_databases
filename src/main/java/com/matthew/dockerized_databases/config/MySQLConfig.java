@@ -1,4 +1,4 @@
-package com.matthew.dockerized_databases;
+package com.matthew.dockerized_databases.config;
 
 
 import jakarta.persistence.EntityManagerFactory;
@@ -60,8 +60,8 @@ public class MySQLConfig {
     @Bean(name = "mysqlDataSourceInitializer")
     public DataSourceInitializer dataSourceInitializer(@Qualifier("dataSource") DataSource datasource) {
         ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
-        resourceDatabasePopulator.addScript(new ClassPathResource("schema-mysql.sql"));
-        resourceDatabasePopulator.addScript(new ClassPathResource("data-mysql.sql"));
+        resourceDatabasePopulator.addScript(new ClassPathResource("/db/mysql/schema-mysql.sql"));
+        resourceDatabasePopulator.addScript(new ClassPathResource("/db/mysql/data-mysql.sql"));
 
         DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
         dataSourceInitializer.setDataSource(datasource);

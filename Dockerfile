@@ -14,7 +14,7 @@ FROM base as development
 CMD ["./mvnw", "spring-boot:run", "-Dspring-boot.run.profiles=h2"]
 
 FROM base as build
-RUN ./mvnw package
+RUN ./mvnw test package
 
 FROM eclipse-temurin:17-jre-jammy as production
 EXPOSE 8080

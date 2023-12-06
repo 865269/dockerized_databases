@@ -1,7 +1,5 @@
 package com.matthew.dockerized_databases;
 
-import com.matthew.dockerized_databases.item.domain.Item;
-import com.matthew.dockerized_databases.item.repo.ItemRepository;
 import com.matthew.dockerized_databases.user.domain.User;
 import com.matthew.dockerized_databases.user.repo.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -16,7 +14,6 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
-import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;

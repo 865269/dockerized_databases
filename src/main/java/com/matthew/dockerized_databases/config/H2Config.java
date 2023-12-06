@@ -1,4 +1,4 @@
-package com.matthew.dockerized_databases;
+package com.matthew.dockerized_databases.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -55,8 +55,8 @@ public class H2Config {
     @Bean(name = "h2DataSourceInitializer")
     public DataSourceInitializer dataSourceInitializer(@Qualifier("h2DataSource") DataSource datasource) {
         ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
-        resourceDatabasePopulator.addScript(new ClassPathResource("schema-h2.sql"));
-        resourceDatabasePopulator.addScript(new ClassPathResource("data-h2.sql"));
+        resourceDatabasePopulator.addScript(new ClassPathResource("/db/h2/schema-h2.sql"));
+        resourceDatabasePopulator.addScript(new ClassPathResource("/db/h2/data-h2.sql"));
 
         DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
         dataSourceInitializer.setDataSource(datasource);

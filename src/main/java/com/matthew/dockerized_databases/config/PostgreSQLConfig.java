@@ -1,4 +1,4 @@
-package com.matthew.dockerized_databases;
+package com.matthew.dockerized_databases.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -55,8 +55,8 @@ public class PostgreSQLConfig {
     @Bean(name = "postgresDataSourceInitializer")
     public DataSourceInitializer dataSourceInitializer(@Qualifier("postgresDataSource") DataSource datasource) {
         ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
-        resourceDatabasePopulator.addScript(new ClassPathResource("schema-postgres.sql"));
-        resourceDatabasePopulator.addScript(new ClassPathResource("data-postgres.sql"));
+        resourceDatabasePopulator.addScript(new ClassPathResource("/db/postgres/schema-postgres.sql"));
+        resourceDatabasePopulator.addScript(new ClassPathResource("db/postgres/data-postgres.sql"));
 
         DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
         dataSourceInitializer.setDataSource(datasource);

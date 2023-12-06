@@ -43,9 +43,9 @@ services:
       - POSTGRES_USER=user
       - POSTGRES_DB=user
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 volumes:
   mysql_data:
   mysql_config:
-  postgres-data:
+  postgres_data:
 
